@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        margin: 0px;
+        background-color: aliceblue;
+    }
+
+    #um {
+        float: left;
+        width: 600px;
+        height: 400px;
+        border: 1px solid black;
+        text-align: center;
+        margin-left: 320px;
+        margin-top: 60px;
+
+    }
+
+    #inputbox table,
+    td,
+    th {
+        border-collapse: collapse;
+        border: 1px solid black;
+
+    }
+
+  
+</style>
+
+<body>
+    <form action="a.do" method="get">
+        <section>
+            <div class="main_form">
+                <form action="savedata" method="get">
+                    <table id="um">
+                        <tr>
+                            <td id="title"> 아이디 </td>
+                            <td>
+                                <input type="text" id="idd">
+                                <input type="button" value="중복체크" onclick="idchk()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> 비밀번호 </td>
+                            <td>
+                                <input type="password" id="pp">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>이름</td>
+                            <td>
+                                <input type="text" id="nn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>전화번호</td>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>주소</td>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>성별</td>
+                            <td>
+                                <input type="checkbox" value="">남자
+                                <input type="checkbox" value="">여자
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>취미</td>
+                            <td>
+                                <input type="checkbox" value="">여행
+                                <input type="checkbox" value="">쇼핑
+                                <input type="checkbox" value="">캠핑
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>사진첨부</td>
+                            <td>
+                                <input type="file" style="font-weight: bold" name="photo">
+
+                                <input type="button" value="사진추가" onclick="add()">
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2">
+                                <input type="button" value="저장" onclick="pw()">
+                                <input type="button" value="유효성체크" onclick="chk(c)">
+                                <input type="button" value="초기화" onclick="re()">
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </section>
+    </form>
+</body>
+
+</html>
+<script>
+    var c = 1
+
+    function idchk() {
+        var a = document.getElementById('idd')
+        var b = idd.value
+
+        if (b == '') {
+            alert('빈칸입니다')
+        } else {
+            alert('아이디:' + b)
+            c = 2
+            return
+        }
+    }
+
+    function pw() {
+        var a = document.getElementById('pp')
+        var b = pp.value
+        var c = document.getElementById('nn')
+        var d = nn.value
+        if (b.length < 4) {
+            alert('비밀번호 다시 입력')
+        } else if (d == '') {
+            alert('이름 입력해주세요')
+        } else {
+            alert('확인됨')
+            return
+        }
+    }
+    function chk(c) {
+        if (c == 2) {
+            alert('okay')
+            return
+        } else {
+            alert('중복체크 하세요')
+        }
+    }
+
+    function add() {
+        var a = document.getElementById('um')
+        var b = a.insertRow(8)
+        var newCell = b.insertCell(0)
+        var newCell2 = b.insertCell(1)
+        newCell2.innerHTML = '<input type="file" style="font-weight: bold" name="photo">'
+    }
+</script>
