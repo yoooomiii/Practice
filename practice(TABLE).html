@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Example</title>
+</head>
+
+<body>
+
+    <button onclick="addRow()">Add Row</button>
+    <button onclick="addHeader()">Add Header</button>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>Header 1</th>    <!--셀(컬럼명)-->
+                <th>Header 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1-1</td>     <!--행(데이터)-->
+                <td>Data 1-2</td>
+            </tr>
+            <tr>
+                <td>Data 2-1</td>
+                <td>Data 2-2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Add a new row to the table
+        function addRow() {       //행추가
+            var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+            //table이란 변수에 mytable의 tbody의 [0]번 인덱스 값 가져오기
+            var newRow = table.insertRow();
+            //newRow는 테이블에 행 추가를 나타냄
+            var cell1 = newRow.insertCell(0);
+            // 추가된 행의 0번째 셀에 들어갈 값을 cell1에 저장
+            var cell2 = newRow.insertCell(1);
+            //추가된 행의 1번쨰 셀에 들어갈 값을 cell2에 저장
+            cell1.innerHTML = "New Data 1";
+            //cell1, 즉 0번째 셀에는 new data1 이라는 정보를 저장
+            cell2.innerHTML = "New Data 2";
+            //cell2, 즉 1번째 셀에는 new data2 이라는 정보를 저장
+        }
+
+        // Add a new header to the table
+        function addHeader() {          //셀추가
+            var headerRow = document.getElementById("myTable").getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
+            //mytable의 htead부분의 [0]번째 인덱스의 tr의 [0]번째 인덱스 값을 headRow에 저장
+            var newHeader = document.createElement('th');
+            //새로만들어진 th의 정보를 newheader에 저장
+            newHeader.textContent = "New Header";
+            //newHeader의 데이터값에 new header 이라는 데이터 값 저장
+            headerRow.appendChild(newHeader);
+            //????
+        }
+    </script>
+
+</body>
+
+</html>

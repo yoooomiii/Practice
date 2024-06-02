@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="addrow">행 추가</button>
+    <button id="addcell">셀 추가</button>
+    <hr>
+
+    <table id="mytable">
+        <thead>
+            <tr>
+                <td>첫번째 셀</td>
+                <td>두번째 셀</td>
+                <td>세번째 셀</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1번째 데이터</td>
+                <td>1번째 데이터</td>
+                <td>1번째 데이터</td>
+            </tr>
+            <tr>
+                <td>2번째 데이터</td>
+                <td>2번째 데이터</td>
+                <td>2번째 데이터</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+
+        document.querySelector('#addrow').addEventListener('click', addrow);
+        document.querySelector('#addcell').addEventListener('click', addcell);
+
+        function addrow() {
+            let a = document.querySelector('#mytable').getElementsByTagName('tbody')[0];
+            let b = a.insertRow();
+            let data1 = b.insertCell(0);
+            let data2 = b.insertCell(1);
+            let data3 = b.insertCell(2);
+            let index = a.rows.length;
+            data1.innerText = index + "번째 데이터";
+            data2.innerText = index + "번째 데이터";
+            data3.innerText = index + "번째 데이터";
+
+        }
+
+        function addcell() {
+            let a = document.querySelector('#mytable').getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
+            let b = document.createElement('th');
+            let index = a.cells.length + 1;
+            b.innerText = index + "번째 셀 추가";
+            a.appendChild(b);
+        }
+
+
+
+    </script>
+</body>
+
+</html>
